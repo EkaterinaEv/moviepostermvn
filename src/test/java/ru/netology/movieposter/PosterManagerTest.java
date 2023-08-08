@@ -37,4 +37,17 @@ class PosterManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldLastIfItemsMore() {
+        PosterManager repo = new PosterManager(6);
+        repo.saveMovie(item1);
+        repo.saveMovie(item2);
+        repo.saveMovie(item3);
+
+        PosterItem[] expected = {item3, item2, item1};
+        PosterItem[] actual = repo.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
