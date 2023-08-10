@@ -2,19 +2,21 @@ package ru.netology.movieposter;
 
 public class PosterManager {
     private int viewLimit = 5;
+    private PosterItem[] items = new PosterItem[0];
+
+    public PosterManager() {
+    }
 
     public PosterManager(int viewLimit) {
         this.viewLimit = viewLimit;
     }
 
-    private PosterItem[] items = new PosterItem[0];
-
-
     public int getViewLimit() {
         return viewLimit;
     }
 
-    public PosterManager() {
+    public void setViewLimit(int viewLimit) {
+        this.viewLimit = viewLimit;
     }
 
     public void saveMovie(PosterItem item) {
@@ -27,7 +29,6 @@ public class PosterManager {
     }
 
     public PosterItem[] findAll() {
-
         return items;
     }
 

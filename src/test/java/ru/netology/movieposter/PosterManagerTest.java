@@ -25,7 +25,7 @@ class PosterManagerTest {
     }
 
     @Test
-    public void shouldLast() {
+    public void shouldLastIfItemsLessLimit() {
         PosterManager repo = new PosterManager(3);
         repo.saveMovie(item1);
         repo.saveMovie(item2);
@@ -38,7 +38,7 @@ class PosterManagerTest {
     }
 
     @Test
-    public void shouldLastIfItemsMore() {
+    public void shouldLastIfItemsMoreLimit() {
         PosterManager repo = new PosterManager(6);
         repo.saveMovie(item1);
         repo.saveMovie(item2);
@@ -50,4 +50,16 @@ class PosterManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldLastIfItemsEqualsLimit() {
+        PosterManager repo = new PosterManager(5);
+        repo.saveMovie(item1);
+        repo.saveMovie(item2);
+        repo.saveMovie(item3);
+
+        PosterItem[] expected = {item3, item2, item1};
+        PosterItem[] actual = repo.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
